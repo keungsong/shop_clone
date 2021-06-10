@@ -32,21 +32,9 @@ class SplashScreen extends StatelessWidget {
                   textStyle: colorizeTextStyle,
                   colors: colorizeColors,
                 ),
-                ColorizeAnimatedText(
-                  'Bill Gates',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
-                ColorizeAnimatedText(
-                  'Steve Jobs',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
               ],
               isRepeatingAnimation: true,
-              onTap: () {
-                print("Tap Event");
-              },
+              onTap: () {},
             ),
           ],
         ),

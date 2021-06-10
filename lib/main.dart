@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
             );
           } else {
             return MaterialApp(
+                debugShowCheckedModeBanner: false,
                 theme: ThemeData(primaryColor: Colors.cyan.shade900),
                 home: LoginScreen());
           }
