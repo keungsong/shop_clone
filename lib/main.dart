@@ -1,28 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_clone/provider/google_sign_in.dart';
+import 'package:shop_clone/screens/home_screen.dart';
 import 'package:shop_clone/screens/login_screen.dart';
+import 'package:shop_clone/screens/phone_auth_screen.dart';
 import 'package:shop_clone/screens/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(MyApp());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: Future.delayed(Duration(seconds: 3)),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: SplashScreen(),
-            );
-          } else {
-            return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(primaryColor: Colors.cyan.shade900),
-                home: LoginScreen());
-          }
-        });
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (_) => GoogleSignInProvider(),
+        child: FutureBuilder(
+            future: Future.delayed(Duration(seconds: 5)),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  home: SplashScreen(),
+                );
+              } else {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  theme: ThemeData(primaryColor: Colors.cyan.shade900),
+                  home: LoginScreen(),
+                  routes: {
+                    HomeScreen.id: (context) => HomeScreen(),
+                    PhoneAuthScreen.id: (context) => PhoneAuthScreen(),
+                    LoginScreen.id: (context) => LoginScreen(),
+                  },
+                );
+              }
+            }),
+      );
 }

@@ -1,5 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_clone/provider/google_sign_in.dart';
+import 'package:shop_clone/screens/phone_auth_screen.dart';
+//import 'package:shop_clone/auth/google_sign_in.dart';
+import 'package:shop_clone/services/phone_auth_service.dart';
 
 class AuthUi extends StatelessWidget {
   @override
@@ -13,7 +20,9 @@ class AuthUi extends StatelessWidget {
             child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, PhoneAuthScreen.id);
+                },
                 child: Row(
                   children: [
                     Icon(
@@ -33,31 +42,18 @@ class AuthUi extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          SignInButton(Buttons.Google,
-              text: ('ດຳເນີນການຕໍ່ດ້ວຍກູໂກ'), onPressed: () {}),
+          SignInButton(Buttons.Google, text: ('ດຳເນີນການຕໍ່ດ້ວຍກູໂກ'),
+              onPressed: () {
+            final provider =
+                Provider.of<GoogleSignInProvider>(context, listen: false);
+
+            provider.googleLogin();
+          }),
           SizedBox(
             height: 8,
           ),
           SignInButton(Buttons.FacebookNew,
               text: ('ດຳເນີນການຕໍ່ດ້ວຍເຟດບຸກ'), onPressed: () {}),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'ຫຼື',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'ເຂົ້າລະບົບຜ່ານອີເມວ',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline),
-            ),
-          ),
         ],
       ),
     );

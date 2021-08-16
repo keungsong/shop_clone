@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "193347069911",
+    "firebase_url": "https://dlottery.firebaseio.com",
+    "project_id": "dlottery",
+    "storage_bucket": "dlottery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193347069911:android:fd998ef9cb466cd33ecd92",
+        "android_client_info": {
+          "package_name": "com.example.shop_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193347069911-4eqthho9cas1cp8nc74c6abcdk7d5pnf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsHLnggvQo66tGZjw83SEg1jbS94MrR_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193347069911-4eqthho9cas1cp8nc74c6abcdk7d5pnf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

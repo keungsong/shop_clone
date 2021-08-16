@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
 
     const colorizeTextStyle = TextStyle(
       fontSize: 30.0,
-      fontFamily: 'Horizon',
+      fontFamily: 'RobotoMono',
     );
     return Scaffold(
       backgroundColor: Colors.white,
@@ -19,16 +19,18 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/images/logo.png',
-            ),
-            SizedBox(
-              height: 10,
+            CircleAvatar(
+              radius: 53,
+              backgroundColor: Color(0xffFDCF09),
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/images/logo.jpg'),
+              ),
             ),
             AnimatedTextKit(
               animatedTexts: [
                 ColorizeAnimatedText(
-                  'ຊື້-ຂາຍ ອອນລາຍ',
+                  ' Company Name ',
                   textStyle: colorizeTextStyle,
                   colors: colorizeColors,
                 ),

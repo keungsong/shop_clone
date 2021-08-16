@@ -31,6 +31,12 @@ dependencies:
   flutter_native_splash: ^1.1.8+4
   animated_text_kit: ^4.2.1
   flutter_signin_button: ^2.0.0
+  google_sign_in: ^5.0.3
+  firebase_auth: ^1.1.4
+  provider: ^5.0.0
+  cloud_firestore: ^2.0.0
+  firebase_core: ^1.1.0
+  legacy_progress_dialog: ^0.0.9
 
 dev_dependencies:
   flutter_test:
@@ -48,8 +54,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
-  - assets/images/logo.png
+  assets:
+      - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
