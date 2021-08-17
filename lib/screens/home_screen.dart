@@ -2,39 +2,52 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_clone/screens/login_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String id = 'home-screen';
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('app name'),
         actions: [
-          IconButton(
-              icon: Icon(Icons.power_off),
-              onPressed: () {
-                FirebaseAuth.instance.signOut().then((value) {
-                  Navigator.pushReplacementNamed(context, LoginScreen.id);
-                });
-              }),
+          
+          Container(
+            margin: EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color:Colors.grey[100],
+              shape:BoxShape.circle,
+            ),
+            child: IconButton(
+                icon: Icon(Icons.search),
+                color: Colors.black,
+                iconSize:20,
+                onPressed: () {
+                 
+                }),
+          ),
+          Container(
+             decoration: BoxDecoration(
+              color:Colors.grey[100],
+              shape:BoxShape.circle,
+            ),
+            child: IconButton(
+                icon: Icon(Icons.exit_to_app),
+                color: Colors.black,
+                onPressed: () {
+                  FirebaseAuth.instance.signOut().then((value) {
+                    Navigator.pushReplacementNamed(context, LoginScreen.id);
+                  });
+                }),
+          ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Messages'),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text('Profile'))
-        ],
-      ),
+      
     );
   }
 }
