@@ -14,40 +14,38 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('app name'),
+        title:Text('Company name'),
         actions: [
-          
-          Container(
-            margin: EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color:Colors.grey[100],
-              shape:BoxShape.circle,
-            ),
-            child: IconButton(
-                icon: Icon(Icons.search),
-                color: Colors.black,
-                iconSize:20,
-                onPressed: () {
-                 
-                }),
-          ),
-          Container(
-             decoration: BoxDecoration(
-              color:Colors.grey[100],
-              shape:BoxShape.circle,
-            ),
-            child: IconButton(
-                icon: Icon(Icons.exit_to_app),
-                color: Colors.black,
-                onPressed: () {
-                  FirebaseAuth.instance.signOut().then((value) {
-                    Navigator.pushReplacementNamed(context, LoginScreen.id);
-                  });
-                }),
-          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: IconButton(icon: Icon(Icons.exit_to_app), onPressed: (
+             
+            ){
+               FirebaseAuth.instance.signOut();
+               Navigator.pushReplacementNamed(context, LoginScreen.id);
+            }),
+          )
         ],
+        bottom:PreferredSize(
+          preferredSize: Size.fromHeight(56),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: TextField(
+              decoration:InputDecoration(
+                prefixIcon: Icon(Icons.search,color: Colors.grey),
+                hintText: 'Search...',
+                border:OutlineInputBorder(
+                  borderRadius:BorderRadius.circular(5),
+                  borderSide:BorderSide.none,
+                ),
+                filled:true,
+                fillColor:Colors.white,
+                contentPadding: EdgeInsets.zero,
+              )
+            ),
+          ),
+        )
       ),
-      
     );
   }
 }
