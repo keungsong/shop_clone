@@ -37,7 +37,10 @@ dependencies:
   cloud_firestore: ^2.0.0
   firebase_core: ^1.1.0
   legacy_progress_dialog: ^0.0.9
-
+  flutter_neumorphic: ^3.1.0
+  csc_picker: ^0.2.5
+  image_picker: ^0.7.5+3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

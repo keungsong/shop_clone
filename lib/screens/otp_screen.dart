@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_clone/screens/home_screen.dart';
+import 'package:shop_clone/screens/main_screen.dart';
 import 'package:shop_clone/screens/phone_auth_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,7 +35,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
       if (user != null) {
         // signed in
-        Navigator.pushReplacementNamed(context, HomeScreen.id);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
       } else {
         if(mounted){
           setState(() {

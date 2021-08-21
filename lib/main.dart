@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_clone/provider/google_sign_in.dart';
+import 'package:shop_clone/screens/forms/seller_form.dart';
 import 'package:shop_clone/screens/home_screen.dart';
 import 'package:shop_clone/screens/login_screen.dart';
+import 'package:shop_clone/screens/main_screen.dart';
 import 'package:shop_clone/screens/phone_auth_screen.dart';
 import 'package:shop_clone/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
                     HomeScreen.id: (context) => HomeScreen(),
                     PhoneAuthScreen.id: (context) => PhoneAuthScreen(),
                     LoginScreen.id: (context) => LoginScreen(),
+                    MainScreen.id:(context)=>MainScreen(),
+                    SellerFormScreen.id:(context)=>SellerFormScreen(),
                   },
                 );
               }
