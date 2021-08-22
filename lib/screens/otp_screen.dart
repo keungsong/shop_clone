@@ -5,6 +5,10 @@ import 'package:shop_clone/screens/main_screen.dart';
 import 'package:shop_clone/screens/phone_auth_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../services/phone_auth_service.dart';
+import 'phone_auth_screen.dart';
+import 'phone_auth_screen.dart';
+
 class OTPScreen extends StatefulWidget {
   final String number, verId;
 
@@ -14,6 +18,8 @@ class OTPScreen extends StatefulWidget {
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+
+  PhoneAuthServices _services = PhoneAuthServices();
   var _text1 = TextEditingController();
   var _text2 = TextEditingController();
   var _text3 = TextEditingController();
@@ -35,8 +41,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
       if (user != null) {
         // signed in
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+       _services.addUser(context);
       } else {
         if (mounted) {
           setState(() {

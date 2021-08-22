@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:shop_clone/screens/home_screen.dart';
 import 'package:shop_clone/screens/otp_screen.dart';
 
+import '../auth/location_screen.dart';
+
 class PhoneAuthServices {
   FirebaseAuth auth = FirebaseAuth.instance;
   User user = FirebaseAuth.instance.currentUser;
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   Future<void> verifyPhoneNumber(BuildContext context, number) async {
     final PhoneVerificationCompleted verificationCompleted =
@@ -44,9 +47,9 @@ class PhoneAuthServices {
     }
   }
 
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  
 
-  Future<void> addUser(context, uid) async {
+  Future<void> addUser(context) async {
     final QuerySnapshot result =
         await users.where('uid', isEqualTo: user.uid).get();
     List<DocumentSnapshot> document = result.docs;
@@ -54,17 +57,18 @@ class PhoneAuthServices {
     if (document.length > 0) {
       // user data exists
       // so just skip firestore
-      Navigator.pushReplacementNamed(context, HomeScreen.id);
+      Navigator.pushReplacementNamed(context, LocationScreen.id);
     } else {
       // data not exists
       // add user data to firebase
-      return users.add({
+      return users.doc(user.uid).set({
         'uid': user.uid,
         'mobile': user.phoneNumber,
         'email': user.email
       }).then((value) {
-        Navigator.pushReplacementNamed(context, HomeScreen.id);
+        Navigator.pushReplacementNamed(context, LocationScreen.id);
       }).catchError((error) => print('failed to add user: $error'));
     }
   }
+
 }

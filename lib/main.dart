@@ -10,6 +10,11 @@ import 'package:shop_clone/screens/phone_auth_screen.dart';
 import 'package:shop_clone/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'auth/location_screen.dart';
+
+import 'screens/splash_screen.dart';
+
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -24,30 +29,22 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-        create: (_) => GoogleSignInProvider(),
-        child: FutureBuilder(
-            future: Future.delayed(Duration(seconds: 5)),
-            builder: (context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  home: SplashScreen(),
-                );
-              } else {
+  Widget build(BuildContext context) {
                 return MaterialApp(
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(primaryColor: Colors.cyan.shade900),
-                  home: LoginScreen(),
+                  initialRoute: SplashScreen.id,
                   routes: {
+                    SplashScreen.id:(context)=>SplashScreen(),
                     HomeScreen.id: (context) => HomeScreen(),
                     PhoneAuthScreen.id: (context) => PhoneAuthScreen(),
                     LoginScreen.id: (context) => LoginScreen(),
                     MainScreen.id: (context) => MainScreen(),
                     SellerFormScreen.id: (context) => SellerFormScreen(),
+                    LocationScreen.id:(context)=>LocationScreen(),
                   },
                 );
               }
-            }),
-      );
-}
+            }
+   
+

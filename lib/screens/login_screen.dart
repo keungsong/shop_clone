@@ -10,13 +10,13 @@ class LoginScreen extends StatelessWidget {
   static const String id = 'login-screen';
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.authStateChanges().listen((User user) {
+    /*FirebaseAuth.instance.authStateChanges().listen((User user) {
       if (user == null) {
       } else {
         // if already logged in it will not ask agian to login
         Navigator.pushReplacementNamed(context, HomeScreen.id);
       }
-    });
+    });*/
     return Scaffold(
       body: Column(
         children: [
