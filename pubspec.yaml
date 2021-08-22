@@ -40,6 +40,8 @@ dependencies:
   flutter_neumorphic: ^3.1.0
   csc_picker: ^0.2.5
   image_picker: ^0.7.5+3
+  firebase_storage: ^8.1.0
+  galleryimage: ^1.1.0
   
 dev_dependencies:
   flutter_test:

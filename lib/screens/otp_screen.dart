@@ -35,20 +35,21 @@ class _OTPScreenState extends State<OTPScreen> {
 
       if (user != null) {
         // signed in
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainScreen()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } else {
-        if(mounted){
+        if (mounted) {
           setState(() {
-          error = 'login failed';
-        });
+            error = 'login failed';
+          });
         }
       }
     } catch (e) {
-     setState(() {
-            if(mounted){
-               error = 'Invalid OTP';
-            }
-          });
+      setState(() {
+        if (mounted) {
+          error = 'Invalid OTP';
+        }
+      });
     }
   }
 

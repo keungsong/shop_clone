@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_clone/provider/cat_provider.dart';
 import 'package:shop_clone/provider/google_sign_in.dart';
 import 'package:shop_clone/screens/forms/seller_form.dart';
 import 'package:shop_clone/screens/home_screen.dart';
@@ -12,9 +13,13 @@ import 'package:firebase_core/firebase_core.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-    MyApp(),
-  );
+  Provider.debugCheckInvalidValueType = null;
+  runApp(MultiProvider(
+    providers: [
+      Provider(create: (_) => CategoryProvider()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -38,8 +43,8 @@ class MyApp extends StatelessWidget {
                     HomeScreen.id: (context) => HomeScreen(),
                     PhoneAuthScreen.id: (context) => PhoneAuthScreen(),
                     LoginScreen.id: (context) => LoginScreen(),
-                    MainScreen.id:(context)=>MainScreen(),
-                    SellerFormScreen.id:(context)=>SellerFormScreen(),
+                    MainScreen.id: (context) => MainScreen(),
+                    SellerFormScreen.id: (context) => SellerFormScreen(),
                   },
                 );
               }

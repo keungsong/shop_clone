@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_clone/screens/forms/seller_form.dart';
 import 'package:shop_clone/screens/home_screen.dart';
+import 'package:shop_clone/screens/main_screen.dart';
 import 'package:shop_clone/widegets/alerDialog.dart';
 import 'package:shop_clone/widegets/auth_ui.dart';
 
