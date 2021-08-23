@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_clone/auth/location_screen.dart';
 import 'package:shop_clone/screens/forms/seller_form.dart';
 import 'package:shop_clone/screens/home_screen.dart';
 import 'package:shop_clone/screens/main_screen.dart';
@@ -10,11 +11,11 @@ class LoginScreen extends StatelessWidget {
   static const String id = 'login-screen';
   @override
   Widget build(BuildContext context) {
-    /*FirebaseAuth.instance.authStateChanges().listen((User user) {
+   /* FirebaseAuth.instance.authStateChanges().listen((User user) {
       if (user == null) {
       } else {
         // if already logged in it will not ask agian to login
-        Navigator.pushReplacementNamed(context, HomeScreen.id);
+        Navigator.pushReplacementNamed(context, LocationScreen.id);
       }
     });*/
     return Scaffold(

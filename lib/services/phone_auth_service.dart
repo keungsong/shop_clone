@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_clone/screens/home_screen.dart';
+
 import 'package:shop_clone/screens/otp_screen.dart';
 
 import '../auth/location_screen.dart';
@@ -10,6 +10,32 @@ class PhoneAuthServices {
   FirebaseAuth auth = FirebaseAuth.instance;
   User user = FirebaseAuth.instance.currentUser;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  Future<void> addUser(context) async {
+    final QuerySnapshot result =
+        await users.where('uid', isEqualTo: user.uid).get();
+    List<DocumentSnapshot> document = result.docs;
+
+    
+      // user data exists
+      // so just skip firestore
+      if(document.length>0){
+         Navigator.pushReplacementNamed(context, LocationScreen.id);
+      }else{
+         // data not exists
+      // add user data to firebase
+      return users.doc(user.uid).set({
+        'uid': user.uid,
+        'mobile': user.phoneNumber,
+        'email': user.email
+      }).then((value) {
+        Navigator.pushReplacementNamed(context, LocationScreen.id);
+      }).catchError((error) => print('failed to add user: $error'));
+      }
+     
+      
+    
+  }
 
   Future<void> verifyPhoneNumber(BuildContext context, number) async {
     final PhoneVerificationCompleted verificationCompleted =
@@ -49,26 +75,6 @@ class PhoneAuthServices {
 
   
 
-  Future<void> addUser(context) async {
-    final QuerySnapshot result =
-        await users.where('uid', isEqualTo: user.uid).get();
-    List<DocumentSnapshot> document = result.docs;
-
-    if (document.length > 0) {
-      // user data exists
-      // so just skip firestore
-      Navigator.pushReplacementNamed(context, LocationScreen.id);
-    } else {
-      // data not exists
-      // add user data to firebase
-      return users.doc(user.uid).set({
-        'uid': user.uid,
-        'mobile': user.phoneNumber,
-        'email': user.email
-      }).then((value) {
-        Navigator.pushReplacementNamed(context, LocationScreen.id);
-      }).catchError((error) => print('failed to add user: $error'));
-    }
-  }
+  
 
 }

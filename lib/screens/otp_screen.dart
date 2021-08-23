@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_clone/auth/location_screen.dart';
+import 'package:shop_clone/screens/forms/seller_form.dart';
 import 'package:shop_clone/screens/home_screen.dart';
 import 'package:shop_clone/screens/main_screen.dart';
 import 'package:shop_clone/screens/phone_auth_screen.dart';
@@ -41,7 +43,9 @@ class _OTPScreenState extends State<OTPScreen> {
 
       if (user != null) {
         // signed in
+        
        _services.addUser(context);
+      // Navigator.pushReplacementNamed(context, LocationScreen.id);
       } else {
         if (mounted) {
           setState(() {
@@ -259,6 +263,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   ),
                 ),
               ),
+              SizedBox(height:18),
             Text(
               error,
               style: TextStyle(color: Colors.red, fontSize: 12),
